@@ -12,16 +12,16 @@ func (g *Generator) Generate() interface{} {
 
 // New constructs a new Generator with some given configuration options. If no
 // options are supplied then the defaults are used.
-func New(options ...ConfigOption) Generator {
+func New(options ...ConfigOption) *Generator {
 	config := DefaultConfig()
 	for _, option := range options {
 		option(&config)
 	}
-	return Generator{config: config}
+	return &Generator{config: config}
 }
 
 // NewWithConfig constructs a new Generator directly from a Config structures.
-func NewWithConfig(config Config) Generator {
+func NewWithConfig(config Config) *Generator {
 	return New(WithConfig(config))
 }
 
